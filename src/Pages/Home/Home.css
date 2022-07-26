@@ -1,0 +1,9 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+  .homeTitle{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #1D1D1D;
+    letter-spacing: 1.3px;
+    font-family: 'Gilda Display', serif;
+  }
