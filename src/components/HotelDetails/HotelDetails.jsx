@@ -12,7 +12,7 @@ const HotelDetails = () => {
                     <div className="col-md-6">
                         <div className="col-left">
                             <div className="d-flex justify-content-center align-items-start flex-column">
-                                <h3 className="hd-title">HOTEL MAZAN SINCE 1992</h3>
+                                <h3 className="hd-title">HOTEL BOKING SINCE 1992</h3>
                                 <span className="hd-title-two">High quality accommodation services</span>
                             </div>
 

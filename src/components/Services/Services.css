@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    min-width: 1000px;
+    width: 100%;
+    height: 100%;
 }
 .swiper{
     display: flex;
@@ -41,7 +42,7 @@
     border-radius: 5px;
 }
 .one:hover .txt{
-    background-color: #61ff6bbf;
+    background-color: #fcb126cb;
     color: #fff;
 }
 .img-container{
@@ -72,15 +73,18 @@
 /* responsive styles*/
 
 @media only screen and (max-width: 468px){
-    .services{
-        width: 100%;
-        height: 100%;
-        display: flex;
+    .txt{
+        position: absolute;
+        left: 0;
+        bottom: 30px;
         justify-content: center;
+        display: flex;
         align-items: center;
-        padding: none;
-    }
-    .swiper-button-prev{
-        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+        color: #270f0fdc;
+        background-color: #dbc4c465;
+        transition: all 0.5s ease-in-out;
     }
 }

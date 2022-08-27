@@ -11,15 +11,28 @@ import four from '../../img/conference.jpg';
 
 const Services = () => {
   return (
-    <div className="services container mt-5  pt-4">
+    <div className="services mt-5 pt-4">
       <Swiper
         modules={[Navigation, Thumbs]}
         loop={true}
         spaceBetween={10}
-        slidesPerView={4}
         navigation={true}
         grabCursor={true}
         className="swiper-slide"
+       breakpoints={{ 
+        0:{
+          slidesPerView:1,
+          spaceBetween:10
+        },
+        468:{ 
+          slidesPerView:2,
+          spaceBetween:10
+        },
+        768:{ 
+          slidesPerView:4,
+          spaceBetween:10
+        },
+       }}
       >
         <SwiperSlide className="swiper one">
           <div className="img-container">
@@ -32,7 +45,6 @@ const Services = () => {
           </div>
         </SwiperSlide>
 
-        {/* two */}
         <SwiperSlide className="swiper one">
           <div className="img-container">
             <img src={three} alt="" className="slide-img" />
@@ -62,7 +74,7 @@ const Services = () => {
             <img src={four} alt="" className="slide-img" />
             <div className="txt">
             <i className="fa-solid fa-utensils spa"></i>
-            <i class="fa-solid fa-podium"></i>
+            <i className="fa-solid fa-podium"></i>
               <h5>Confarence Room</h5>
               <p className="ser-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fugit explicabo corrupti.</p>
             </div>

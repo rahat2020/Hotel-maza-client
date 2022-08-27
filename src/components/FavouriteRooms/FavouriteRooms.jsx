@@ -8,7 +8,7 @@ import './FavouriteRooms.css';
 
 const FavouriteRooms = () => {
     return (
-        <div className="favouriteRooms container mt-5">
+        <div className="favouriteRooms container mt-5" data-aos="fade-up">
             <div className="fvroom">
                 <div className="row">
                     <div className="col-md-5">

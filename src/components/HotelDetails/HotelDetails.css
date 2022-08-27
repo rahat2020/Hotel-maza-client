@@ -1,6 +1,10 @@
 .hotelDetails{
-  
     background-color: #FFFFFF;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 .hdContainer{
     width: 100%;
@@ -15,7 +19,7 @@
     color: #1D1D1D;
     /* color: #000000cb; */
     margin-bottom: 5px;
-    font-family: 'Gilda Display', serif;
+    letter-spacing: 1px;
 }
 .col-left .hd-title-two{
     color: #000000cb;
@@ -103,6 +107,5 @@
     }
     .col-right .col-right-img-two{
         display: none;
-      
     }
 }

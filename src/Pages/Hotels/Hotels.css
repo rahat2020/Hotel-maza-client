@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 73px;
   }
   
   .hotelWrapper {
@@ -68,7 +68,7 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 6px;
   }
   
   .hotelDetailsTexts {
@@ -148,4 +148,7 @@
     font-size: 50px;
     color: lightgray;
     cursor: pointer;
+  }
+  .rButton{
+    background-color: #ffa400;
   }

@@ -24,8 +24,7 @@ const Footer = () => {
               </div>
               <div className="contact">
                 <h4 className="fott-left-title">Contact</h4>
-                <p className="fott-left-para">1616 Broadway NY, New York 10001
-                  United States of America</p>
+                <p className="fott-left-para">HQ. <i className="fa-solid fa-right-long"></i> Dhaka - Golshan 1011, Bangladesh</p>
                 <div className="phn">
                   <p className="phn-num"><i className="fa-solid fa-phone"></i> 0186111111111</p>
                   <p className="phn-num"><i className="fa-solid fa-envelope env"></i>hotelMazan@gmail.com</p>

@@ -10,7 +10,7 @@
   
   .siImg {
     width: 200px;
-    height: 200px;
+    height: auto;
     object-fit: cover;
   }
   
@@ -60,10 +60,10 @@
   }
   
   .siDetails {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
   }
   
   .siRating{
@@ -99,11 +99,41 @@
   }
   
   .siCheckButton{
-    background-color: #0071c2;
+    background-color: #ffa400;
     color: white;
     font-weight: bold;
-    padding: 10px 5px;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
+    letter-spacing: 1px;
     border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 468px){
+    .searchItem{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .siImg {
+      width: 100%;
+      object-fit: cover;
+    }
+    .siDetails {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .siRating{
+      border: 1px solid #ffa400;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+    .siDetailTexts{
+      align-items: center;
+    }
   }

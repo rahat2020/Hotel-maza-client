@@ -1,7 +1,7 @@
 .listContainer {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 84px;
   }
   
   .listWrapper {
@@ -12,7 +12,7 @@
   }
   
   .listSearch {
-    flex: 1;
+    /* flex: 1; */
     background-color: #febb02;
     padding: 10px;
     border-radius: 10px;
@@ -70,15 +70,48 @@
   
   .listSearch>button{
     padding: 10px;
-    background-color: #0071c2;
-    color: white;
+    background-color: #193b53c5;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: #fff;
     border: none;
     width: 100%;
     font-weight: 500;
     cursor: pointer;
+    transition: all 0.1s ease;
   }
-  
-  .listResult {
-    flex: 3;
+  .listSearch>button:hover{
+    background: #0071c2;
   }
-  
+  .Ls__date{
+    font-size: .90rem;
+  }
+
+  @media only screen and (max-width: 468px){
+    .listContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .listWrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .listSearch {
+      width: 100%;
+      background-color: #febb02;
+      padding: 10px;
+      border-radius: 10px;
+      position: relative;
+      top: 10px;
+      height: max-content;
+    }
+   
+    .Ls__date{
+      font-size: .77rem;
+    }
+  }

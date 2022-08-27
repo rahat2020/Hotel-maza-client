@@ -1,9 +1,10 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500&display=swap');
   .homeTitle{
     text-transform: uppercase;
-    font-weight: 700;
-    color: #1D1D1D;
-    letter-spacing: 1.3px;
-    font-family: 'Gilda Display', serif;
+    font-weight: 500;
+    color: #1d1d1dbe;
+    letter-spacing: 1.99px;
+    font-family: 'DynaPuff', cursive;
+
   }
