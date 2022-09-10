@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import './App.css';
 import { AuthContext } from './context/AuthContext';
 import AddArticles from './Dashboard/AddArticles/AddArticles';
 import ArticleLists from './Dashboard/AddArticles/ArticleLists';
