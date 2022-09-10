@@ -15,7 +15,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/hotel/room/${hotelId}`)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/room/${hotelId}`)
                 setData(res.data)
             } catch (e) {
                 console.log(e);
@@ -23,6 +23,13 @@ const Reserve = ({ setOpen, hotelId }) => {
         }
         fetchData()
     }, [hotelId])
+
+    // SELECTED ROOMS ID 
+    const [roomId, setRoomId] = useState('')
+    // console.log('roomid',roomId)
+    const selectedRoomsId = (item) => {
+        setRoomId(item)
+    }
     // get dates
     const { dates } = useContext(SearchContext);
     const getDatesInRange = (startDate, endDate) => {
@@ -41,14 +48,16 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     // room select
     const [selectedRooms, setSelectedRooms] = useState([]);
-    console.log(selectedRooms)
+    // console.log(selectedRooms)
     const handleSelect = (e) => {
         const checked = e.target.checked;
         const value = e.target.value;
         setSelectedRooms(
             checked
-                ? [...selectedRooms, value]
-                : selectedRooms.filter((item) => item !== value)
+                ?
+                [...selectedRooms, value]
+                :
+                selectedRooms.filter((item) => item !== value)
         );
     }
     // is room available 
@@ -59,36 +68,36 @@ const Reserve = ({ setOpen, hotelId }) => {
 
         return !isFound;
     };
+
+
     // reserve room with preferable dates
-    const {user} = useContext(AuthContext)
-    const [booked, setBooked] = useState([])
-    console.log(booked)
+    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const handleClickReserve = async () => {
         try {
-          const list =  await Promise.all(
+            await Promise.all(
                 selectedRooms.map((roomId) => {
-                    const res = axios.put(`http://localhost:5000/room/availability/${roomId}`, {
+                    const res = axios.put(`https://hotelboking.herokuapp.com/room/availability/${roomId}`, {
                         dates: alldates,
                     });
-                    setBooked(res.data)
-                    return  res.data;
-                   
+                    console.log(roomId);
+                    return res.data;
+
                 })
             );
-            // setProduct(list)
-            console.log(list)
 
-            // const bookObj ={
-            //     email: user.email,
-            //     product:booked,
-            // }
-            // const res = await axios.post('http://localhost:5000/order/add', bookObj)
-            // console.log(res)
+            const bookObj = {
+                email: user.email,
+                product: selectedRooms,
+                hotel: hotelId,
+                roomId,
+            }
+
+            const res = await axios.post('https://hotelboking.herokuapp.com/order/add', bookObj)
             setOpen(false);
             navigate("/booked");
-            
-            Swal.fire({
+
+            res && Swal.fire({
                 icon: 'success',
                 title: "Room has been booked",
             })
@@ -117,6 +126,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                                         <input
                                             type="checkbox"
                                             onChange={handleSelect}
+                                            onClick={() => selectedRoomsId(item._id)}
                                             value={roomNumber._id}
                                             disabled={!isAvailable(roomNumber)}
                                         />
@@ -134,4 +144,4 @@ const Reserve = ({ setOpen, hotelId }) => {
     )
 }
 
-export default Reserve
+export default Reserve;

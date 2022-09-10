@@ -61,14 +61,18 @@
        display: none;
        z-index: 999;
        transition: all 0.5s ease-in-out;
+       margin-top: -1rem;
     }
     #open{
         display: flex;
         z-index: 999;
         transition: all 0.5s ease-in-out;
         position: absolute;
+
         height: 120vh;
+        border: 1px solid #444;
     }
+   
     .close__icon{
         display: flex;
         color:#ffa400;

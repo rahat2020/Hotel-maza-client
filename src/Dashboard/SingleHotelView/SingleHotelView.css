@@ -46,6 +46,9 @@
 }
 .s__img{
     margin: .5rem;
+    width: 15rem;
+    height: 10rem;
+    object-fit: cover;
 }
 .single__text{
     font-weight: 500;

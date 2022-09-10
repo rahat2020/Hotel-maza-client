@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import GlobalNav from '../../components/GlobalNav/GlobalNav';
 import './Single.css';
@@ -14,7 +14,7 @@ const Single = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/article/get/${id}`)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/article/get/${id}`)
                 setData(res.data)
             } catch (err) {
                 console.log(err)
@@ -23,6 +23,21 @@ const Single = () => {
         fetchData()
     }, [id])
 
+    // GET ALL DATA FROM DATABASE
+    const [ar, setAr] = useState([])
+    // console.log(data)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axios.get('https://hotelboking.herokuapp.com/article/get')
+                setAr(res.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchData()
+    }, [])
     return (
         <>
             <GlobalNav />
@@ -67,7 +82,23 @@ const Single = () => {
                         <div className="col-md-3">
                             <div className="col__right">
                                 <div className="col__rghtContainer">
-                                    
+                                    {
+                                        ar.slice(0, 5).map((itm,index) => (
+                                            <div className="S__right" key={index}>
+                                                <img src={itm.bgimg} className="Sright__img" alt="..." />
+                                                <div className="card-body Sright__body">
+                                                    <h5 className="Sright__head">{itm.headline}</h5>
+                                                    <p className="Sright__text">
+                                                        {itm.titleOne}
+                                                    </p>
+                                                    <Link to={`/read/${itm._id}`}className="link">
+                                                        <button className="Sright__btn">read more</button>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+
                                 </div>
                             </div>
                         </div>

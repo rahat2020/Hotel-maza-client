@@ -1,6 +1,6 @@
 .footer{
   background-color: #222222;
-  height: 90vh;
+  height: 100vh;
   /* padding: 3.77rem; */
 }
 .fottCol-left{
@@ -111,10 +111,18 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 1em;
   }
-  .explore, .contact{
-    min-width: none;
-    min-height: none;
+  .explore{
+   display: none;
+  }
+  .contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 0px;
+    min-height: 0px;
   }
 }
 

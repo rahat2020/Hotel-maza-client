@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import './Sidebar.css';
 import logo from '../../img/cover.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 import { AuthContext } from '../../context/AuthContext';
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
-   
-    const { dispatch } = useContext(AuthContext)
 
+    const { dispatch } = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" });
+        navigate("/login")
     }
 
     const token = JSON.parse(localStorage.getItem('token'))
@@ -76,7 +77,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                                         <i className="fa-solid fa-bookmark"></i> Booked
                                     </li>
                                 </Link>
-                                <Link to="/addreviews" className="link">
+                                <Link to="/reviews" className="link">
                                     <li>
                                         <i className="fa-solid fa-bookmark"></i> Review
                                     </li>

@@ -35,7 +35,28 @@
 .headerDesc {
     margin: 20px 0px;
   }
-  
+  .headerListItem{
+    /* background-color: #ffa400; */
+    border: 1px solid #ffa400;
+    color: #ffa400;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+.sticker{
+  font-size: 3em;
+  background-image: url('../../img/profile.png');
+  -webkit-background-clip: text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:text 9.4s linear infinite;
+}
+@keyframes text {
+  from {background-position: 0% 50%;}
+  to{background-position: 100% 100%;}
+}
   .headerBtn {
     background-color: #ffa400;
     border: none;

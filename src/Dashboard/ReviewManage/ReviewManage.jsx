@@ -14,7 +14,7 @@ const ReviewManage = () => {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     };
     useEffect(() => {
-        fetch("http://localhost:5000/review/getReview", {
+        fetch("https://hotelboking.herokuapp.com/review/getReview", {
             method: "GET",
             headers: {
                 token: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -34,7 +34,7 @@ const ReviewManage = () => {
     // DELETE USER AND ADMIN
     const handleDeleteAdmin = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/review/delete/${id}`, config)
+            const res = await axios.delete(`https://hotelboking.herokuapp.com/review/delete/${id}`, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'Review deleted',

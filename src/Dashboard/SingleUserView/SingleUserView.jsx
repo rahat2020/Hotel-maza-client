@@ -19,7 +19,7 @@ const SingleUserView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/auth/user/${id}`, config)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/auth/user/${id}`, config)
                 setData(res.data)
 
             } catch (err) {
@@ -44,7 +44,7 @@ const SingleUserView = () => {
             password
         }
         try {
-            const res = await axios.put(`http://localhost:5000/auth/updateUser/${id}`, userObj, config)
+            const res = await axios.put(`https://hotelboking.herokuapp.com/auth/updateUser/${id}`, userObj, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'User updated successfully'

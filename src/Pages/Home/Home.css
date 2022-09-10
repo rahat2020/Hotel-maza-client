@@ -8,3 +8,14 @@
     font-family: 'DynaPuff', cursive;
 
   }
+  .homeTitle::after{
+    content: " ";
+    background: #ffa400;
+    width: 20%;
+    height: 5px; 
+    position: absolute; 
+    bottom: -10px;
+    left: 50%; 
+    border-radius:30px 20px 10px 20px;
+    transform: translateX(-50%);
+  }

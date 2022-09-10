@@ -20,6 +20,9 @@ const Footer = () => {
                   <li className="li">Home</li>
                   <li className="li">Rooms & Suits</li>
                   <li className="li">Resturant</li>
+                  <li className="li">All destinations</li>
+                  <li className="li">Villas</li>
+                  <li className="li">Guest houses</li>
                 </ul>
               </div>
               <div className="contact">
@@ -27,7 +30,7 @@ const Footer = () => {
                 <p className="fott-left-para">HQ. <i className="fa-solid fa-right-long"></i> Dhaka - Golshan 1011, Bangladesh</p>
                 <div className="phn">
                   <p className="phn-num"><i className="fa-solid fa-phone"></i> 0186111111111</p>
-                  <p className="phn-num"><i className="fa-solid fa-envelope env"></i>hotelMazan@gmail.com</p>
+                  <p className="phn-num"><i className="fa-solid fa-envelope env"></i>hotelBookingn@gmail.com</p>
                   <div className="d-flex text-white">
                     <i className="fa-brands fa-instagram text-white fs-3"></i>
                     <i className="fa-brands fa-twitter text-white ms-3 fs-3"></i>
@@ -39,9 +42,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-        <div className="copyright">
-          <small className="copy-contianer">© Copyright 2022 by <span className="text-white">HotelMazan.</span></small>
-        </div>
+      <div className="copyright">
+        <small className="copy-contianer">© Copyright 2022 by <span className="text-white">Hotel Booking.</span></small>
+      </div>
     </div>
   );
 };

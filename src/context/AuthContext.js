@@ -1,4 +1,5 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
+import jwt_decode from 'jwt-decode';
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
@@ -42,10 +43,22 @@ const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+  const [token, setToken] = useState(" ")
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.access_token, state.user]);
+
+
+  useEffect(() => {
+    const authToken = localStorage.getItem("token")
+    let tkn = null;
+    if (authToken) {
+      return setToken(jwt_decode(authToken))
+    } else {
+      localStorage.setItem("token", JSON.stringify(tkn))
+    }
+  }, [])
 
   return (
     <AuthContext.Provider
@@ -53,6 +66,7 @@ export const AuthContextProvider = ({ children }) => {
         user: state.user,
         loading: state.loading,
         error: state.error,
+        token,
         dispatch,
       }}
     >

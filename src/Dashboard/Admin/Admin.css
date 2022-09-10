@@ -258,21 +258,15 @@
 }
 
 
+
+
 /* responsive style */
 @media only screen and (max-width:468px){
-    .TeacherAdd{
-        padding: 5rem;
-        margin-left: 1rem;
-    }
+    
     .Tadd{
         padding: 0;
         box-shadow: none;
     }
-}
-
-/* responsive style */
-@media only screen and (max-width:468px){
-  
     .fCount{
         display: flex;
         flex-direction: column;

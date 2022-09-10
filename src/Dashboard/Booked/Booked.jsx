@@ -10,15 +10,13 @@ import Topbar from '../Topbar/Topbar';
 const Booked = () => {
     const [data, setData] = useState([])
     console.log(data)
-
     const { user } = useContext(AuthContext)
-
     // FETCH USER DATA FROM DATABASE
     useEffect(() => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/order/booked?email=${user.email}`)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/order/booked?email=${user.email}`)
                 setData(res.data)
             } catch (err) {
                 console.log(err)
@@ -28,6 +26,32 @@ const Booked = () => {
 
     }, [user.email]);
 
+    //DELETE BOOKED ROOM 
+    const handleDelete = async (id) => {
+        try {
+            const res = await axios.delete(`https://hotelboking.herokuapp.com/order/delete/${id}`);
+
+            res && Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        } catch (err) {
+
+        }
+    }
     return (
         <div className="ad">
             <Topbar />
@@ -55,12 +79,10 @@ const Booked = () => {
                                         <table className="table border">
                                             <thead>
                                                 <tr className="text-center">
-                                                    <th className="thead" scope="col">NAME</th>
                                                     <th className="thead" scope="col">EMAIL</th>
-                                                    <th className="thead" scope="col">ADDRESS</th>
-                                                    <th className="thead" scope="col">ADMIN</th>
-                                                    <th className="thead" scope="col">PHONE</th>
-                                                    <th className="thead" scope="col">PHOTO</th>
+                                                    <th className="thead" scope="col">ROOM ID</th>
+                                                    <th className="thead" scope="col">ROOM BOOKED</th>
+                                                    <th className="thead" scope="col">HOTEL</th>
                                                     <th className="thead" scope="col">ACTIONS</th>
                                                 </tr>
                                             </thead>
@@ -68,20 +90,28 @@ const Booked = () => {
                                                 data.map(item => (
                                                     <tbody className="tbody" key={item._id}>
                                                         <tr className="trow">
-                                                            <td data-title="NAME" className="tdata">{item.username}</td>
                                                             <td data-title="EMAIL" className="tdata">{item.email}</td>
-                                                            <td data-title="ADDRESS" className="tdata">N/A</td>
-                                                            <td data-title="TITLE" className="tdata">{item.isAdmin ? "Yes" : "No"}</td>
-                                                            <td data-title="RATING" className="tdata">{item.phone ? item.phone : "N/A"}</td>
-                                                            <td data-title="PHOTO" className="tdata">
-                                                                <img src={item.img} alt="user-img" className="regImg" />
+                                                            <td data-title="ROOM ID" className="tdata">{item.roomId}</td>
+                                                            <td data-title="ROOM BOOKED" className="tdata">
+                                                                {item.product ? item.product[0] : "not found"}
+                                                                {/* {
+                                                                    item.product.map((itm,index)=> (
+                                                                        <span key={index}>{itm[0]}</span>
+                                                                    ))
+                                                                } */}
                                                             </td>
+                                                            <td data-title="ROOM BOOKED" className="tdata">{item.hotel ? item.hotel : "not found"}</td>
+
                                                             <td data-title="ACTIONS" className="tdata">
                                                                 <div className="action">
-                                                                    <Link to={`/singleUsers/${item._id}`} className="link">
+                                                                    {/* <Link to={`/bookedRoom/${item.product? item.product[1] : "undefined"}`} className="link">
+                                                                        <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
+                                                                    </Link> */}
+
+                                                                    <Link to={`/bookedRoom/${item.roomId}`} className="link">
                                                                         <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
                                                                     </Link>
-                                                                    {/* <button className="btnDelete" onClick={() => handleDeleteAdmin(item._id)}><i className="fa-solid fa-trash"></i></button> */}
+                                                                    <button className="btnDelete" onClick={() => handleDelete(item._id)}><i className="fa-solid fa-trash"></i></button>
                                                                 </div>
                                                             </td>
                                                         </tr>

@@ -12,7 +12,7 @@ const Hotelsadd = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/room/getAllRooms', config)
+                const res = await axios.get('https://hotelboking.herokuapp.com/room/getAllRooms', config)
                 // console.log(res)
                 setgetRooms(res.data)
             } catch (err) {
@@ -84,7 +84,7 @@ const Hotelsadd = () => {
                 featured
             }
             console.log(hotelObject)
-            const res = await axios.post('http://localhost:5000/hotel/add', hotelObject, config);
+            const res = await axios.post('https://hotelboking.herokuapp.com/hotel/add', hotelObject, config);
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',

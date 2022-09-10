@@ -15,7 +15,7 @@ const AddHotel = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/hotel/allhotels')
+                const res = await axios.get('https://hotelboking.herokuapp.com/hotel/allhotels')
                 console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -29,7 +29,7 @@ const AddHotel = () => {
     // useEffect(() => {
     //     const fetchData = async () => {
     //         try {
-    //             const res = await axios.get('http://localhost:5000/room/getAllRooms')
+    //             const res = await axios.get('https://hotelboking.herokuapp.com/room/getAllRooms')
     //             // console.log(res)
     //             setgetRooms(res.data)
     //         } catch (err) {
@@ -47,7 +47,7 @@ const AddHotel = () => {
     };
     const handleDelete = async (id) => {
         try {
-            const deleted = await axios.delete(`http://localhost:5000/hotel/delete/${id}`, config)
+            const deleted = await axios.delete(`https://hotelboking.herokuapp.com/hotel/delete/${id}`, config)
             console.log(deleted)
             deleted && Swal.fire({
                 title: 'Are you sure?',
@@ -100,7 +100,7 @@ const AddHotel = () => {
                                                 <th className="thead" scope="col">NAME</th>
                                                 <th className="thead" scope="col">TYPE</th>
                                                 <th className="thead" scope="col">ADDRESS</th>
-                                                <th className="thead" scope="col">TITLE</th>
+                                                <th className="thead" scope="col">CITY</th>
                                                 <th className="thead" scope="col">RATING</th>
                                                 <th className="thead" scope="col">PHOTO</th>
                                                 <th className="thead" scope="col">ACTIONS</th>
@@ -113,7 +113,7 @@ const AddHotel = () => {
                                                         <td data-title="NAME" className="tdata">{item.name}</td>
                                                         <td data-title="TYPE" className="tdata">{item.type}</td>
                                                         <td data-title="ADDRESS" className="tdata">{item.address}</td>
-                                                        <td data-title="TITLE" className="tdata">{item.title}</td>
+                                                        <td data-title="CITY" className="tdata">{item.city}</td>
                                                         <td data-title="RATING" className="tdata">{item.rating}</td>
                                                         <td data-title="PHOTO" className="tdata">
                                                             <img src={item.photos? item.photos[0] : "images not found"} alt="hotel-img" className="regImg" />

@@ -12,6 +12,7 @@ const SingleHotelView = () => {
 
     // GET HOTEL DETAILS BY ID
     const [data, setData] = useState([])
+    console.log(data)
     const [roomId, setRoomId] = useState([])
     // console.log(roomId)
     const [fetchData, setFetchData] = useState([])
@@ -24,7 +25,7 @@ const SingleHotelView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const getItem = await axios.get(`http://localhost:5000/hotel/gethotel/${id}`)
+                const getItem = await axios.get(`https://hotelboking.herokuapp.com/hotel/gethotel/${id}`)
                 setData(getItem.data)
                 setRoomId(getItem.data.rooms)
                 // console.log(getItem)
@@ -37,10 +38,11 @@ const SingleHotelView = () => {
 
 
     // FETCH ROOM BY ID
+ 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/room/getAllRooms')
+                const res = await axios.get('https://hotelboking.herokuapp.com/room/getAllRooms', config)
                 // console.log(res)
                 setFetchData(res.data)
             } catch (err) {
@@ -84,16 +86,16 @@ const SingleHotelView = () => {
         console.log(hotelObj)
 
         try {
-            const res = await axios.put(`http://localhost:5000/hotel/updateHotels/${id}`, hotelObj, config)
+            const res = await axios.put(`https://hotelboking.herokuapp.com/hotel/updateHotels/${id}`, hotelObj, config)
             console.log(res)
         } catch (err) {
             console.log(err)
         }
     }
 
-    if (roomId === fetchData.id) {
-        return console.log('they are equal')
-    }
+    // if (roomId === fetchData.id) {
+    //     return console.log('they are equal')
+    // }
     return (
         <div className="ad">
             <Topbar />
@@ -105,12 +107,7 @@ const SingleHotelView = () => {
                         <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Single Post view</span></strong>
                         <div className="adDash">
                             <div className="TeacherAdd">
-                                <div className="teacherTitle">
-                                    <div className="colLeft">
-                                        <h3 className="title">Post view</h3>
-                                        <strong className="firstTitle">Dashboard / <span className="scndTitle">single post</span></strong>
-                                    </div>
-                                </div>
+                             
 
 
                                 <div className="mt-3">
@@ -220,11 +217,22 @@ const SingleHotelView = () => {
                                             }
 
                                             <strong className="border-bottom">Hotel Rooms:</strong>
-                                            <p className="single__text">
-                                                {data.rooms ? data.rooms[0] : "room one"},
-                                                {data.rooms ? data.rooms[1] : "room two"},
+                                          {/* {
+                                            data.map((item,index) => (
+                                                <div className="single__text" key={index}>
+                                                    {
+                                                    item?.roomNumbers.map((roomNumber) =>(
+                                                        <p key={roomNumber._id}>{roomNumber?.number}</p>
+                                                    ))
+                                                    }
+                                                </div>
+                                            ))
+                                          } */}
+                                            {/* <p className="single__text">
+                                                {data.rooms ? data.rooms[0] : "room one"}, {data.rooms ? data.rooms[1] : "room two"},
+
                                                 {data.rooms ? data.rooms[2] : "room three"},
-                                            </p>
+                                            </p> */}
                                             <strong className="border-bottom">Address</strong>
                                             {
                                                 updated ?

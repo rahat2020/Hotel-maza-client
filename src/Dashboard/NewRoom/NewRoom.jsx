@@ -17,8 +17,8 @@ const NewRoom = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/room/getAllRooms', config)
-                // const res = await axios.get('http://localhost:5000/hotel/allhotels')
+                const res = await axios.get('https://hotelboking.herokuapp.com/room/getAllRooms', config)
+                // const res = await axios.get('https://hotelboking.herokuapp.com/hotel/allhotels')
                 // console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -31,7 +31,7 @@ const NewRoom = () => {
     // DELETE ROOMS
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/room/delete/${id}`, config)
+            const res = await axios.delete(`https://hotelboking.herokuapp.com/room/delete/${id}`, config)
             console.log(res)
             res && Swal.fire({
                 title: 'Are you sure?',

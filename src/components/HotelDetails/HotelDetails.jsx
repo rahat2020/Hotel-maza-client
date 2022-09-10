@@ -3,6 +3,7 @@ import './HotelDetails.css';
 import aboutone from '../../img/aboutone.jpg';
 import abouttwo from '../../img/abouttwo.jpg';
 import Title from 'react-vanilla-tilt';
+import { Link } from 'react-router-dom';
 
 const HotelDetails = () => {
     return (
@@ -17,7 +18,9 @@ const HotelDetails = () => {
                             </div>
 
                             <p className="hd-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus quia incidunt tempora expedita et quo pariatur odit quidem, asperiores ab? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam illum amet aperiam reprehenderit repellat quis eius alias asperiores repudiandae adipisci Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, architecto Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, animi.</p>
-                            <button className="btn-hd-details">More Details <i className="fa-solid fa-chevron-right hd-icon"></i></button>
+                            <Link to="/aboutbook" className="link">
+                                <button className="btn-hd-details">More Details <i className="fa-solid fa-chevron-right hd-icon"></i></button>
+                            </Link>
                         </div>
                     </div>
                     <div className="col-md-6">

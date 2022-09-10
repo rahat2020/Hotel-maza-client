@@ -30,7 +30,7 @@ const Hotel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/hotel/gethotel/${id}`)
+        const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/gethotel/${id}`)
         setData(res.data)
         // console.log(res)
       } catch (e) {
@@ -50,7 +50,7 @@ const Hotel = () => {
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
-  console.log(dayDifference(dates[0].endDate, dates[0].startDate))
+  // console.log(dayDifference(dates[0].endDate, dates[0].startDate))
 
   const photos = [
     {
@@ -105,7 +105,7 @@ const Hotel = () => {
     <>
       <div>
         <GlobalNav />
-        <div className="hotelContainer">
+        <div className="hotelContainer container">
           {open && (
             <div className="slider">
               <FontAwesomeIcon
@@ -130,8 +130,10 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
-            <h1 className="hotelTitle">{data.name}</h1>
+            <div className="d-flex justify-content-between align-items-center">
+              <p className="bookNow">Breakfast and Dinner included!</p>
+              <h1 className="hotelTitle">{data.name}</h1>
+            </div>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
@@ -160,6 +162,32 @@ const Hotel = () => {
                 <p className="hotelDesc">
                   {data.desc}
                 </p>
+                <div className="hotelOterhs">
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-house"></i>
+                    Aparments
+                  </p>
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-kitchen-set"></i>
+                    Kitchen
+                  </p>
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-sink"></i>
+                    Washing Machine
+                  </p>
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-wifi"></i>
+                    Free WiFi
+                  </p>
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-fan"></i>
+                    Air Conditioner
+                  </p>
+                  <p className="d-flex flex-column align-items-center hotelIcons__texts">
+                    <i className="fa-solid fa-ban-smoking"></i>
+                    Non-smoking rooms
+                  </p>
+                </div>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
@@ -178,8 +206,10 @@ const Hotel = () => {
         <MailList />
         <Footer />
       </div>
+      <div className="w-100 h-100">
+        {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
 
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+      </div>
     </>
   );
 };

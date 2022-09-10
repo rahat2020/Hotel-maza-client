@@ -69,6 +69,7 @@
     justify-content: space-between;
     gap: 20px;
     margin-top: 6px;
+  
   }
   
   .hotelDetailsTexts {
@@ -79,7 +80,17 @@
     font-size: 14px;
     margin-top: 20px;
   }
-  
+  .hotelOterhs{
+    display: flex;
+    gap: 20px;
+    /* border: 1px solid #555; */
+  }
+  .hotelIcons__texts{
+    border: 1px solid #a8a8a8a9;
+    padding: 7px;
+    font-size: .88rem;
+    font-weight: 500;
+  }
   .hotelDetailsPrice {
     flex: 1;
     background-color: #ebf3ff;
@@ -151,4 +162,31 @@
   }
   .rButton{
     background-color: #ffa400;
+  }
+  @media only screen and (max-width:468px){
+    .hotelDetailsTexts{
+      padding: 1rem;
+      width: 100%;
+      height: 100%;
+    } 
+    .bookNow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      padding: 5px 10px;
+      background-color: #0071c2;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .hotelOterhs{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
   }

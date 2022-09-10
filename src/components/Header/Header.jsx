@@ -18,9 +18,11 @@ import { SearchContext } from "../../context/SearchContext";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { AuthContext } from "../../context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({ type }) => {
-
+  const notify = () => toast("Please login first to search, thank you!");
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
@@ -70,7 +72,7 @@ const Header = ({ type }) => {
             <FontAwesomeIcon icon={faBed} />
             <span className="ms-1">Stays</span>
           </div>
-          <div className="headerListItem">
+          <div className="headerListItem ">
             <FontAwesomeIcon icon={faPlane} />
             <span className="ms-1">Flights</span>
           </div>
@@ -86,10 +88,11 @@ const Header = ({ type }) => {
             <FontAwesomeIcon icon={faTaxi} />
             <span className="ms-1">Airport taxis</span>
           </div>
+
         </div>
         {type !== "list" && (
           <>
-            <h1 className="headerTitle" data-aos="fade-left">
+            <h1 className="headerTitle sticker" data-aos="fade-left">
               A lifetime of discounts? It's Genius.
             </h1>
             <h1 data-aos="fade-left" className="sticker">Find your next stay here.</h1>
@@ -211,11 +214,17 @@ const Header = ({ type }) => {
                   </button>
                     :
                     (
-                      <Link className="link" to="/login">
-                        <button type="button" className="headerDisablebtn">
+                      <div>
+                        <button type="button" className="headerDisablebtn" onClick={notify}>
                           Login
                         </button>
-                      </Link>
+                        <ToastContainer />
+                      </div>
+                      // <Link className="link" to="/login">
+                      //   <button type="button" className="headerDisablebtn" id="liveToast">
+                      //     Login
+                      //   </button>
+                      // </Link>
                     )
                 }
 

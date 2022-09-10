@@ -15,7 +15,7 @@ const Admin = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/auth/allUsers", config)
+                const res = await axios.get("https://hotelboking.herokuapp.com/auth/allUsers", config)
                 setData(res.data)
             } catch (err) {
                 console.log(err)
@@ -34,7 +34,7 @@ const Admin = () => {
     };
     const handleDeleteAdmin = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/auth/deleteuser/${id}`, config)
+            const res = await axios.delete(`https://hotelboking.herokuapp.com/auth/deleteuser/${id}`, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'User deleted',

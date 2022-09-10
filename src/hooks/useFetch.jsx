@@ -17,7 +17,7 @@ const useFetch = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/hotel/allhotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/allhotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
                 setData(res.data)
 
             } catch (err) {
@@ -29,7 +29,7 @@ const useFetch = () => {
 
     const reFetch = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/hotel/allhotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
+            const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/allhotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
             setData(res.data)
 
         } catch (err) {

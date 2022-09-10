@@ -71,7 +71,7 @@ const AddArticles = () => {
             }
             console.log(artObject)
 
-            const res = await axios.post('http://localhost:5000/article/add', artObject, config);
+            const res = await axios.post('https://hotelboking.herokuapp.com/article/add', artObject, config);
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',

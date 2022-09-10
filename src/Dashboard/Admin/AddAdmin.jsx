@@ -15,7 +15,7 @@ const AddAdmin = () => {
 
     // FETCH USER DATA FROM DATABASE
     useEffect(() => {
-        fetch("http://localhost:5000/auth/allUsers", {
+        fetch("https://hotelboking.herokuapp.com/auth/allUsers", {
             method: "GET",
             headers: {
                 token: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -56,7 +56,7 @@ const AddAdmin = () => {
                 isAdmin
             }
             console.log(userObj)
-            const res = await axios.post("http://localhost:5000/auth/register", userObj, config)
+            const res = await axios.post("https://hotelboking.herokuapp.com/auth/register", userObj, config)
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',

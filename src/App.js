@@ -27,8 +27,12 @@ import Hotels from './Pages/Hotels/Hotels';
 import List from './Pages/List/List';
 import Login from './Pages/Login/Login.jsx';
 import Signup from './Pages/Signup/Signup';
-import jwt_decode from "jwt-decode";
 import Booked from './Dashboard/Booked/Booked';
+import SingleBookedView from './Dashboard/SingleBookedView/SingleBookedView';
+import AddReview from './Dashboard/Review/AddReview';
+import About from './Pages/About/About';
+import GotoTop from './components/GotoTop/GotoTop';
+import Contactus from './Pages/Contactus/Contactus';
 
 const App = () => {
 
@@ -39,9 +43,8 @@ const App = () => {
     }
     return children;
   };
-  const token = JSON.parse(localStorage.getItem('token'))
-  const decodedToken = jwt_decode(token)
-  // console.log(decodedToken);
+
+  const { token } = useContext(AuthContext);
 
   return (
     <>
@@ -49,16 +52,25 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hotels" element={<List />} />
+          <Route path="/aboutbook" element={<About />} />
           <Route path="/hotels/:id" element={<Hotels />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contactus" element={<Contactus />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/read/:id" element={<Single />} />
-          <Route path="/dashboard/home" element={<ProtectedRoute>
-            <DashHome />
-          </ProtectedRoute>} />
-          <Route path="/addreviews" element={
+          <Route path="/dashboard/home" element={
+            <ProtectedRoute>
+              <DashHome />
+            </ProtectedRoute>}
+          />
+          <Route path="/reviews" element={
             <ProtectedRoute>
               <Review />
+            </ProtectedRoute>}
+          />
+          <Route path="/addReviews" element={
+            <ProtectedRoute>
+              <AddReview />
             </ProtectedRoute>}
           />
           <Route path="/singleUsers/:id" element={
@@ -71,81 +83,6 @@ const App = () => {
               <Booked />
             </ProtectedRoute>}
           />
-
-          <Route path="/admin" element={
-            decodedToken.isAdmin === true ?
-              <Admin />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/addadmins" element={
-            decodedToken.isAdmin === true ?
-              <AddAdmin />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/addhotel" element={
-            decodedToken.isAdmin === true ?
-              <AddHotel />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/add" element={
-            decodedToken.isAdmin === true ?
-              <Hotelsadd />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-
-          <Route path="/addRoom" element={
-            decodedToken.isAdmin === true ?
-              <NewRoom />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/adrooms" element={
-            decodedToken.isAdmin === true ?
-              <HotelRoom />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/singleHotel/:id" element={
-            decodedToken.isAdmin === true ?
-              <SingleHotelView />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-          <Route path="/singeRoomView/:id" element={
-            decodedToken.isAdmin === true ?
-              <SingleRoomView/>
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
-
-          <Route path="/reviewmanage" element={
-            decodedToken.isAdmin === true ?
-              <ReviewManage />
-              :
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>}
-          />
           <Route path="/artlists" element={
             <ProtectedRoute>
               <ArticleLists />
@@ -156,8 +93,90 @@ const App = () => {
               <AddArticles />
             </ProtectedRoute>}
           />
+
+
+          <Route path="/admin" element={
+            token.isAdmin === true ?
+              <Admin />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/addadmins" element={
+            token.isAdmin === true ?
+              <AddAdmin />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/addhotel" element={
+            token.isAdmin === true ?
+              <AddHotel />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/add" element={
+            token.isAdmin === true ?
+              <Hotelsadd />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+
+          <Route path="/addRoom" element={
+            token.isAdmin === true ?
+              <NewRoom />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/adrooms" element={
+            token.isAdmin === true ?
+              <HotelRoom />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/singleHotel/:id" element={
+            token.isAdmin === true ?
+              <SingleHotelView />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/singeRoomView/:id" element={
+            token.isAdmin === true ?
+              <SingleRoomView />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/bookedRoom/:hotel" element={
+            <ProtectedRoute>
+              <SingleBookedView />
+            </ProtectedRoute>}
+          />
+
+          <Route path="/reviewmanage" element={
+            token.isAdmin === true ?
+              <ReviewManage />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
         </Routes>
       </BrowserRouter>
+      <GotoTop />
     </>
   )
 }

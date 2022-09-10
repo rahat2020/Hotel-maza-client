@@ -20,7 +20,7 @@ const SingleUserView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/room/getRoomByID/${id}`, config)
+                const res = await axios.get(`https://hotelboking.herokuapp.com/room/getRoomByID/${id}`, config)
                 setData(res.data)
 
             } catch (err) {
@@ -47,7 +47,7 @@ const SingleUserView = () => {
         }
         console.log(roomObj)
         try {
-            const res = await axios.put(`http://localhost:5000/room/updateRoom/${id}`, roomObj, config)
+            const res = await axios.put(`https://hotelboking.herokuapp.com/room/updateRoom/${id}`, roomObj, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'Room updated successfully'

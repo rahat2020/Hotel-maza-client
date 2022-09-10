@@ -4,13 +4,13 @@ import "./propertyList.css";
 
 const PropertyList = () => {
   const [data, setData] = useState([])
-  // console.log(data[1])
+  // console.log(data[0])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/hotel/countByType')
+        const res = await axios.get('https://hotelboking.herokuapp.com/hotel/countByType')
         // console.log(res)
         setData(res.data)
 

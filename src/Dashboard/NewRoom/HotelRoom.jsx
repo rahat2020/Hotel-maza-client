@@ -11,7 +11,7 @@ const HotelRoom = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/hotel/allhotels')
+                const res = await axios.get('https://hotelboking.herokuapp.com/hotel/allhotels')
                 // console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -46,7 +46,7 @@ const HotelRoom = () => {
         }
         console.log(roomsObj)
         try {
-            const res = await axios.post(`http://localhost:5000/room/createRoom/${hotelId}`, roomsObj, config)
+            const res = await axios.post(`https://hotelboking.herokuapp.com/room/createRoom/${hotelId}`, roomsObj, config)
             console.log(res)
             res && Swal.fire({
                 icon: 'success',
@@ -114,7 +114,7 @@ const HotelRoom = () => {
                                                     >
                                                         {data &&
                                                             data.map((hotel,index) => (
-                                                                <option key={index} value={hotel._id} className="form-control">{hotel.name}</option>
+                                                                <option onChange={(e) => setHotelId(e.target.value)} key={index} value={hotel._id} className="form-control">{hotel.name}</option>
                                                             ))}
                                                     </select>
                                                 </div>
