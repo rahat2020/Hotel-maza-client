@@ -9,7 +9,7 @@ import SingleReviews from './SingleReviews';
 
 const AllReviews = () => {
     const [data, setData] = useState([])
-    console.log(data)
+    // console.log(data)
     useEffect(() => {
         const fetchData = async () => {
             try {

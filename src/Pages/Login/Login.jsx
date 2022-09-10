@@ -23,14 +23,14 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("https://hotelboking.herokuapp.com/auth/login", userObject);
-      // console.log(res.data)
+      // console.log(res)
       Swal.fire({
         icon: 'success',
         title: `${res.statusText}`,
         text: 'Logged in successfully!',
       })
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      localStorage.setItem("token", JSON.stringify(res.data.access_token))
+      res.statusText === "OK" && localStorage.setItem("token", JSON.stringify(res.data.access_token) ?? null)
       navigate("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
@@ -77,7 +77,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

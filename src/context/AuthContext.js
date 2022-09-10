@@ -43,7 +43,7 @@ const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-  const [token, setToken] = useState(" ")
+  const [token, setToken] = useState("")
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
@@ -51,7 +51,7 @@ export const AuthContextProvider = ({ children }) => {
 
 
   useEffect(() => {
-    const authToken = localStorage.getItem("token")
+    const authToken = localStorage.getItem("token") ?? null;
     let tkn = null;
     if (authToken) {
       return setToken(jwt_decode(authToken))
