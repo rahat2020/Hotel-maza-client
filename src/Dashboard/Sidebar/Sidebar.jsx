@@ -67,6 +67,11 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                                         <i className="fa-solid fa-shield"></i> Admin
                                     </li>
                                 </Link>
+                                <Link to="/allbokings" className="link">
+                                    <li>
+                                        <i className="fa-solid fa-shield"></i> All bookings
+                                    </li>
+                                </Link>
                             </>
 
                             :

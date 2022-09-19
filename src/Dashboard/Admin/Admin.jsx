@@ -39,6 +39,10 @@ const Admin = () => {
                 icon: 'success',
                 title: 'User deleted',
             })
+            setTimeout(() => {
+                window.location.reload();
+            },[1000])
+            return clearTimeout(setTimeout())
         } catch (e) {
             console.log(e)
         }
@@ -54,7 +58,6 @@ const Admin = () => {
                     <div className="titleContainer">
                         <div className="d-flex justify-content-between">
                             <div className="">
-                                <h3 className="title">Welcome Admin!</h3>
                                 <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Admin management</span></strong>
                             </div>
                             <div className="addbtn">

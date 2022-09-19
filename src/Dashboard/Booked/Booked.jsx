@@ -11,6 +11,7 @@ const Booked = () => {
     const [data, setData] = useState([])
     console.log(data)
     const { user } = useContext(AuthContext)
+    console.log(user.email)
     // FETCH USER DATA FROM DATABASE
     useEffect(() => {
 
@@ -18,6 +19,7 @@ const Booked = () => {
             try {
                 const res = await axios.get(`https://hotelboking.herokuapp.com/order/booked?email=${user.email}`)
                 setData(res.data)
+                console.log(res.data)
             } catch (err) {
                 console.log(err)
             }
@@ -48,6 +50,10 @@ const Booked = () => {
                     )
                 }
             })
+            setTimeout(() => {
+                window.location.reload();
+            }, [1000])
+            return clearTimeout(setTimeout())
         } catch (err) {
 
         }

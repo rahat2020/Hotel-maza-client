@@ -34,6 +34,7 @@ import AddReview from './Dashboard/Review/AddReview';
 import About from './Pages/About/About';
 import GotoTop from './components/GotoTop/GotoTop';
 import Contactus from './Pages/Contactus/Contactus';
+import AllBookings from './Dashboard/AllBookings/AllBookings';
 
 const App = () => {
 
@@ -140,6 +141,14 @@ const App = () => {
           <Route path="/adrooms" element={
             token.isAdmin === true ?
               <HotelRoom />
+              :
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>}
+          />
+          <Route path="/allbokings" element={
+            token.isAdmin === true ?
+              <AllBookings />
               :
               <ProtectedRoute>
                 <Home />

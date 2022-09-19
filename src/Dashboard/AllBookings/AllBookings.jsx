@@ -1,38 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import Sidebar from '../Sidebar/Sidebar'
-import Topbar from '../Topbar/Topbar';
 import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../context/AuthContext';
+import Sidebar from '../Sidebar/Sidebar';
+import Topbar from '../Topbar/Topbar';
 
-const NewRoom = () => {
+const AllBookings = () => {
     const [data, setData] = useState([])
-    // console.log(data)
-
-
-    // FETCH HOTEL DATA FROM DATABASE
+    console.log(data)
+    const { user } = useContext(AuthContext)
+    console.log(user.email)
+    // FETCH USER DATA FROM DATABASE
     const config = {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     }
     useEffect(() => {
+
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotelboking.herokuapp.com/room/getAllRooms', config)
-                // const res = await axios.get('https://hotelboking.herokuapp.com/hotel/allhotels')
-                // console.log(res)
+                const res = await axios.get("https://hotelboking.herokuapp.com/order/get", config)
                 setData(res.data)
+                console.log(res.data)
             } catch (err) {
                 console.log(err)
             }
         }
         fetchData()
-    }, [])
 
-    // DELETE ROOMS
+    }, []);
+
+    //DELETE BOOKED ROOM 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`https://hotelboking.herokuapp.com/room/delete/${id}`, config)
-            console.log(res)
+            const res = await axios.delete(`https://hotelboking.herokuapp.com/order/delete/${id}`);
+
             res && Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -55,10 +57,9 @@ const NewRoom = () => {
             }, [1000])
             return clearTimeout(setTimeout())
         } catch (err) {
-            console.log(err)
+
         }
     }
-
     return (
         <div className="ad">
             <Topbar />
@@ -68,30 +69,27 @@ const NewRoom = () => {
                     <div className="titleContainer">
                         <div className="d-flex justify-content-between">
                             <div className="">
-                                <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Manage Rooms</span></strong>
+                                <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Hotel booked</span></strong>
                             </div>
-                            <div className="addbtn">
-                                <Link to="/adrooms">
-                                    <button className="btn__add">Add Rooms</button>
+                            {/* <div className="addbtn">
+                                <Link to="/addadmins">
+                                    <button className="btn__add">Add Admin</button>
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
 
-
                         <div className="adDash">
-                            {/* hotels table */}
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="tableWrapprer">
-                                        <p className="starTitle">Rooms list</p>
+                                        <p className="starTitle">All booked list</p>
                                         <table className="table border">
                                             <thead>
                                                 <tr className="text-center">
-                                                    <th className="thead" scope="col">NAME</th>
-                                                    <th className="thead" scope="col">MAX PEOPLE</th>
-                                                    <th className="thead" scope="col">DESCRIPTION</th>
-                                                    <th className="thead" scope="col">ROOM NUMBER</th>
-                                                    <th className="thead" scope="col">RATING</th>
+                                                    <th className="thead" scope="col">EMAIL</th>
+                                                    <th className="thead" scope="col">ROOM ID</th>
+                                                    <th className="thead" scope="col">ROOM BOOKED</th>
+                                                    <th className="thead" scope="col">HOTEL</th>
                                                     <th className="thead" scope="col">ACTIONS</th>
                                                 </tr>
                                             </thead>
@@ -99,19 +97,28 @@ const NewRoom = () => {
                                                 data.map(item => (
                                                     <tbody className="tbody" key={item._id}>
                                                         <tr className="trow">
-                                                            <td data-title="NAME" className="tdata">{item.title}</td>
-                                                            <td data-title="MAX PEOPLE" className="tdata">{item.maxPeople}</td>
-                                                            <td data-title="DESCRIPTION" className="tdata">{item.desc}</td>
-                                                            <td data-title="ROOM NUMBER" className="tdata">
-                                                                {item.roomNumbers.map(s => (s.number))}
+                                                            <td data-title="EMAIL" className="tdata">{item.email}</td>
+                                                            <td data-title="ROOM ID" className="tdata">{item.roomId}</td>
+                                                            <td data-title="ROOM BOOKED" className="tdata">
+                                                                {item.product ? item.product[0] : "not found"}
+                                                                {/* {
+                                                                    item.product.map((itm,index)=> (
+                                                                        <span key={index}>{itm[0]}</span>
+                                                                    ))
+                                                                } */}
                                                             </td>
-                                                            <td data-title="RATING" className="tdata">{item.price}</td>
+                                                            <td data-title="ROOM BOOKED" className="tdata">{item.hotel ? item.hotel : "not found"}</td>
+
                                                             <td data-title="ACTIONS" className="tdata">
                                                                 <div className="action">
-                                                                    <Link to={`/singeRoomView/${item._id}`}>
+                                                                    {/* <Link to={`/bookedRoom/${item.product? item.product[1] : "undefined"}`} className="link">
+                                                                        <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
+                                                                    </Link> */}
+
+                                                                    <Link to={`/bookedRoom/${item.roomId}`} className="link">
                                                                         <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
                                                                     </Link>
-                                                                    <button className="btnDelete"><i className="fa-solid fa-trash" onClick={() => handleDelete(item._id)}></i></button>
+                                                                    <button className="btnDelete" onClick={() => handleDelete(item._id)}><i className="fa-solid fa-trash"></i></button>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -130,4 +137,7 @@ const NewRoom = () => {
     )
 }
 
-export default NewRoom
+export default AllBookings
+
+
+
