@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import Topbar from '../Topbar/Topbar';
 import Sidebar from '../Sidebar/Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const AddArticles = () => {
    
@@ -19,7 +20,7 @@ const AddArticles = () => {
     const [paraFour, setParaFour] = useState('')
     const [bgimg, setBGimg] = useState('')
 
-   
+   const navigate = useNavigate()
     const config = {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     };
@@ -77,6 +78,10 @@ const AddArticles = () => {
                 icon: 'success',
                 title: 'Articles added',
             })
+            setTimeout(function () {
+                navigate("/artlists")
+            }, [1000])
+            return clearTimeout(setTimeout())
         } catch (e) {
             console.log(e)
         }
@@ -91,15 +96,9 @@ const AddArticles = () => {
                     <div className="titleContainer">
                         <div className="adDash">
                             <div className="TeacherAdd">
-                                <div className="teacherTitle">
-                                    <div className="colLeft">
-                                        <h2 className="title">Add Articles</h2>
-                                        <strong className="firstTitle">Dashboard / <span className="scndTitle">add Articles</span></strong>
-                                    </div>
-                                </div>
 
                                 {/* Teacher add forms */}
-                                <div className="mt-3">
+                                <div className="">
                                     <div className="Tadd">
                                         {/* basic details */}
                                         <>

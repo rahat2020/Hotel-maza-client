@@ -46,7 +46,7 @@ const App = () => {
   };
 
   const { token } = useContext(AuthContext);
-  console.log(token);
+  // console.log(token);
   return (
     <>
       <BrowserRouter>

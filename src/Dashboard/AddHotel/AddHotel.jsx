@@ -11,7 +11,7 @@ const AddHotel = () => {
     console.log(data)
 
     // FETCH HOTEL DATA FROM DATABASE
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -45,9 +45,9 @@ const AddHotel = () => {
     const config = {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     };
-    const handleDelete = async (id) => {
+    const handleDelete = async (_id) => {
         try {
-            const deleted = await axios.delete(`https://hotelboking.herokuapp.com/hotel/delete/${id}`, config)
+            const deleted = await axios.delete(`https://hotelboking.herokuapp.com/hotel/delete/${_id}`, config)
             console.log(deleted)
             deleted && Swal.fire({
                 title: 'Are you sure?',
@@ -66,6 +66,10 @@ const AddHotel = () => {
                     )
                 }
             })
+            setTimeout(() => {
+                deleted && window.location.reload()
+            }, [1000])
+            return clearTimeout(setTimeout())
         } catch (e) {
             console.log(e)
         }
@@ -81,7 +85,6 @@ const AddHotel = () => {
                         <div className="titleContainer">
                             <div className="d-flex justify-content-between">
                                 <div className="">
-                                    <h3 className="title">Add New Hotels!</h3>
                                     <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Admin Add Hotels</span></strong>
                                 </div>
                                 <div className="addbtn">
@@ -116,14 +119,16 @@ const AddHotel = () => {
                                                         <td data-title="CITY" className="tdata">{item.city}</td>
                                                         <td data-title="RATING" className="tdata">{item.rating}</td>
                                                         <td data-title="PHOTO" className="tdata">
-                                                            <img src={item.photos? item.photos[0] : "images not found"} alt="hotel-img" className="regImg" />
+                                                            <img src={item.photos ? item.photos[0] : "images not found"} alt="hotel-img" className="regImg" />
                                                         </td>
                                                         <td data-title="ACTIONS" className="tdata">
                                                             <div className="action">
                                                                 <Link to={`/singleHotel/${item._id}`} className="link">
                                                                     <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
                                                                 </Link>
-                                                                <button className="btnDelete"><i className="fa-solid fa-trash" onClick={() => handleDelete(item._id)}></i></button>
+                                                                <button className="btnDelete"  onClick={() => handleDelete(item._id)}>
+                                                                    <i className="fa-solid fa-trash"></i>
+                                                                </button>
                                                             </div>
                                                         </td>
                                                     </tr>

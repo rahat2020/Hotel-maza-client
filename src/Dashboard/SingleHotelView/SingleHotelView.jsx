@@ -103,8 +103,7 @@ const SingleHotelView = () => {
             <div className="single">
                 <div className="adminDash">
                     <div className="titleContainer">
-                        <h3 className="title">Welcome Admin!</h3>
-                        <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Single Post view</span></strong>
+                        <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Single hotel view</span></strong>
                         <div className="adDash">
                             <div className="TeacherAdd">
                              

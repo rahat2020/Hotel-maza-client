@@ -50,7 +50,10 @@ const NewRoom = () => {
                     )
                 }
             })
-
+            setTimeout(() => {
+                window.location.reload();
+            },[1000])
+            return clearTimeout(setTimeout())
         } catch (err) {
             console.log(err)
         }
@@ -65,7 +68,6 @@ const NewRoom = () => {
                     <div className="titleContainer">
                         <div className="d-flex justify-content-between">
                             <div className="">
-                                <h3 className="title">Manage Rooms!</h3>
                                 <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Manage Rooms</span></strong>
                             </div>
                             <div className="addbtn">

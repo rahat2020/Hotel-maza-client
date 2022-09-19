@@ -85,7 +85,6 @@ const AddAdmin = () => {
                             <div className="TeacherAdd">
                                 <div className="teacherTitle">
                                     <div className="colLeft">
-                                        <h3 className="title">Add Admin</h3>
                                         <strong className="firstTitle">Dashboard / <span className="scndTitle">add admin</span></strong>
                                     </div>
                                 </div>

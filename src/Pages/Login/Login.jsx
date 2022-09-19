@@ -32,6 +32,10 @@ const Login = () => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       res.statusText === "OK" && localStorage.setItem("token", JSON.stringify(res.data.access_token) ?? null)
       navigate("/")
+      setTimeout(function () {
+        res && window.location.reload();
+      }, [1000])
+      return clearTimeout(setTimeout())
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
       console.log(err)

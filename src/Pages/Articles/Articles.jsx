@@ -20,7 +20,7 @@ const Articles = () => {
     }, [])
 
     return (
-        <div className="ar">
+        <div className="ar" id="blog">
             <div className="ar__container container">
                 <div className="row">
                     {

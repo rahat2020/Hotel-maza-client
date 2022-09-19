@@ -7,7 +7,7 @@ const Contactus = () => {
     return (
         <>
             <GlobalNav />
-            <div className="contain">
+            <div className="contain shadow">
                 <div className="wrapper">
                     <div className="form">
                         <h4>GET IN TOUCH</h4>

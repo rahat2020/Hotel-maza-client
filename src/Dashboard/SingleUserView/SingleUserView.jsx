@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext';
 import Sidebar from '../Sidebar/Sidebar'
@@ -12,6 +12,7 @@ const SingleUserView = () => {
     const [updated, setUpdated] = useState(false)
     const [data, setData] = useState([])
     const [showpass, hidepass] = useState(false)
+    const [file, setFile] = useState('')
 
     const config = {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
@@ -34,11 +35,19 @@ const SingleUserView = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const { user } = useContext(AuthContext)
-    console.log(user.img)
+    const navigate = useNavigate()
+    // console.log(user.img)
+
     const handleUpdate = async () => {
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", "upload");
+        const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/rahatdev1020/image/upload", data)
+        const { url } = uploadRes.data
+
         const userObj = {
             userId: user._id,
-            img:user.img,
+            img: url,
             username,
             email,
             password
@@ -49,6 +58,7 @@ const SingleUserView = () => {
                 icon: 'success',
                 title: 'User updated successfully'
             })
+            navigate("/login")
         } catch (err) {
             console.log(err)
         }
@@ -68,18 +78,10 @@ const SingleUserView = () => {
             <div className="single">
                 <div className="adminDash">
                     <div className="titleContainer">
-                        <h3 className="title">Welcome {user.username}!</h3>
+                        <p className="title">Welcome {user.username}!</p>
                         <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Single user view</span></strong>
                         <div className="adDash">
                             <div className="TeacherAdd">
-                                <div className="teacherTitle">
-                                    <div className="colLeft">
-                                        <h3 className="title">User view</h3>
-                                        <strong className="firstTitle">Dashboard / <span className="scndTitle">single user</span></strong>
-                                    </div>
-                                </div>
-
-
                                 <div className="mt-3">
                                     <div className="Single__form">
                                         <div className="d-flex justify-content-between">
@@ -101,7 +103,19 @@ const SingleUserView = () => {
                                             <div className="row">
                                                 <div className="col-md-4">
                                                     <div className="Suserimg__container">
-                                                        <img src={data.img} alt="" className="single__img" />
+                                                        {
+                                                            updated ?
+                                                                <input
+                                                                    type="file"
+                                                                    placeholder="img"
+                                                                    id="img`"
+                                                                    onChange={(e) => setFile(e.target.files[0])}
+                                                                    className="form-control"
+                                                                />
+                                                                :
+                                                                <img src={data.img} alt="" className="single__img shadow rounded" />
+                                                        }
+
                                                     </div>
                                                 </div>
                                                 <div className="col-md-8">

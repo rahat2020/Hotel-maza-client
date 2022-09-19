@@ -32,7 +32,7 @@ const FeaturedProperties = () => {
   return (
     <div className="fProperty" data-aos="fade-up">
       <div className="container">
-        <div className="row">
+        <div className="row card__margin">
           {
             loading ? ("loading please wait...") :
               <>

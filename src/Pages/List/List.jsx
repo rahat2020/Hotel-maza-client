@@ -21,7 +21,7 @@ const List = () => {
   //FETCHING DATA FROM DATABASE
   // const [data, setData] = useState([])
   // console.log(data)
-
+console.log(options)
   // FETCH DATA BY DESTINATIONS
 
   useEffect(() => {
@@ -104,6 +104,7 @@ const List = () => {
                   <span className="lsOptionText">Adult</span>
                   <input
                     type="number"
+                    defaultValue={options.adult}
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.adult}
@@ -114,6 +115,7 @@ const List = () => {
                   <input
                     type="number"
                     min={0}
+                    defaultValue={options.children}
                     className="lsOptionInput"
                     placeholder={options.children}
                   />
@@ -123,6 +125,7 @@ const List = () => {
                   <input
                     type="number"
                     min={1}
+                    defaultValue={options.room}
                     className="lsOptionInput"
                     placeholder={options.room}
                   />

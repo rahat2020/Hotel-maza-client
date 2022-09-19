@@ -43,9 +43,6 @@ const GlobalNav = () => {
                                 <Link to="/" className="nav-link" aria-current="page" id="home">HOME</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/" className="nav-link active" aria-current="page" id="Gnav-items">BLOG</Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link to="/contactus" className="nav-link active" aria-current="page" id="Gnav-items">CONTACT US</Link>
                             </li>
                             <li className="nav-item">

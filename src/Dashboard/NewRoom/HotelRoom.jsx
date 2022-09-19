@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Topbar from '../Topbar/Topbar';
 import Sidebar from '../Sidebar/Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const HotelRoom = () => {
     // FETCH HOTEL DATA FROM DATABASE
@@ -29,7 +30,7 @@ const HotelRoom = () => {
     const [hotelId, setHotelId] = useState(undefined);
     console.log(hotelId)
     const [rooms, setRooms] = useState('')
-
+    const navigate = useNavigate()
     const config = {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     };
@@ -52,6 +53,10 @@ const HotelRoom = () => {
                 icon: 'success',
                 title: 'Room created'
             })
+            setTimeout(() => {
+                navigate("/addRoom")
+            }, [1000])
+            return clearTimeout(setTimeout())
         } catch (e) {
             console.log(e)
         }
@@ -70,7 +75,6 @@ const HotelRoom = () => {
                             <div className="TeacherAdd">
                                 <div className="teacherTitle">
                                     <div className="colLeft">
-                                        <h2 className="title">Add Rooms</h2>
                                         <strong className="firstTitle">Dashboard / <span className="scndTitle">add rooms</span></strong>
                                     </div>
                                 </div>

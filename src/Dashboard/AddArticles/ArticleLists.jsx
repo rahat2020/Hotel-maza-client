@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ArticleLists = () => {
     const [data, setData] = useState([])
     console.log(data)
-    
+
     // FETCH article DATA FROM DATABASE
     useEffect(() => {
         const fetchData = async () => {
@@ -36,6 +36,10 @@ const ArticleLists = () => {
                 icon: 'success',
                 title: 'Article Deleted',
             })
+            setTimeout(() => {
+                window.location.reload();
+            }, [1000])
+            return clearTimeout(setTimeout())
         } catch (e) {
             console.log(e)
         }
@@ -51,7 +55,6 @@ const ArticleLists = () => {
                         <div className="titleContainer">
                             <div className="d-flex justify-content-between">
                                 <div className="">
-                                    <h3 className="title">Add New Articles!</h3>
                                     <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Add Articles</span></strong>
                                 </div>
                                 <div className="addbtn">

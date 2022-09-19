@@ -52,7 +52,6 @@ const ReviewManage = () => {
             <div className="admin">
                 <div className="adminDash">
                     <div className="titleContainer">
-                        <h3 className="title">Welcome Admin!</h3>
                         <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Review management</span></strong>
 
                         <div className="adDash">
