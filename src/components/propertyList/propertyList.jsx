@@ -10,7 +10,7 @@ const PropertyList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://hotelboking.herokuapp.com/hotel/countByType')
+        const res = await axios.get('https://hotel-mazan.up.railway.app/hotel/countByType')
         // console.log(res)
         setData(res.data)
 

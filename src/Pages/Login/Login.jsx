@@ -22,7 +22,7 @@ const Login = () => {
       ;
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("https://hotelboking.herokuapp.com/auth/login", userObject);
+      const res = await axios.post("https://hotel-mazan.up.railway.app/auth/login", userObject);
       // console.log(res)
       Swal.fire({
         icon: 'success',

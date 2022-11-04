@@ -21,13 +21,13 @@ const List = () => {
   //FETCHING DATA FROM DATABASE
   // const [data, setData] = useState([])
   // console.log(data)
-console.log(options)
+// console.log(options)
   // FETCH DATA BY DESTINATIONS
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/allhotels?city=${destination}`)
+        const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/allhotels?city=${destination}`)
         // console.log(res)
         setData(res.data)
 
@@ -43,7 +43,7 @@ console.log(options)
   // SEARCH MIN AND MAX
   const handleClick = async () => {
     try {
-      const minmax = await axios.get(`https://hotelboking.herokuapp.com/hotel/allhotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
+      const minmax = await axios.get(`https://hotel-mazan.up.railway.app/hotel/allhotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
       // console.log(minmax)
       setData(minmax.data)
 

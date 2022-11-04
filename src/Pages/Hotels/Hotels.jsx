@@ -30,7 +30,7 @@ const Hotel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/gethotel/${id}`)
+        const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/gethotel/${id}`)
         setData(res.data)
         // console.log(res)
       } catch (e) {

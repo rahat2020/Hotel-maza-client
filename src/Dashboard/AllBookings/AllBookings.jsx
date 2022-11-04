@@ -19,7 +19,7 @@ const AllBookings = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get("https://hotelboking.herokuapp.com/order/get", config)
+                const res = await axios.get("https://hotel-mazan.up.railway.app/order/get", config)
                 setData(res.data)
                 console.log(res.data)
             } catch (err) {
@@ -33,7 +33,7 @@ const AllBookings = () => {
     //DELETE BOOKED ROOM 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`https://hotelboking.herokuapp.com/order/delete/${id}`);
+            const res = await axios.delete(`https://hotel-mazan.up.railway.app/order/delete/${id}`);
 
             res && Swal.fire({
                 title: 'Are you sure?',

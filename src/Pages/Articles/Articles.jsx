@@ -10,7 +10,7 @@ const Articles = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotelboking.herokuapp.com/article/get')
+                const res = await axios.get('https://hotel-mazan.up.railway.app/article/get')
                 setData(res.data)
             } catch (e) {
                 console.log(e)

@@ -11,15 +11,15 @@ const Booked = () => {
     const [data, setData] = useState([])
     console.log(data)
     const { user } = useContext(AuthContext)
-    console.log(user.email)
+    // console.log(user.email)
     // FETCH USER DATA FROM DATABASE
     useEffect(() => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotelboking.herokuapp.com/order/booked?email=${user.email}`)
+                const res = await axios.get(`https://hotel-mazan.up.railway.app/order/booked?email=${user.email}`)
                 setData(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             } catch (err) {
                 console.log(err)
             }
@@ -31,7 +31,7 @@ const Booked = () => {
     //DELETE BOOKED ROOM 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`https://hotelboking.herokuapp.com/order/delete/${id}`);
+            const res = await axios.delete(`https://hotel-mazan.up.railway.app/order/delete/${id}`);
 
             res && Swal.fire({
                 title: 'Are you sure?',
@@ -67,21 +67,15 @@ const Booked = () => {
                     <div className="titleContainer">
                         <div className="d-flex justify-content-between">
                             <div className="">
-                                <h3 className="title">Welcome {user.username}!</h3>
                                 <strong className="firstTitle">Dashboard / <span className="text-muted fw-bold">Hotel booked</span></strong>
                             </div>
-                            {/* <div className="addbtn">
-                                <Link to="/addadmins">
-                                    <button className="btn__add">Add Admin</button>
-                                </Link>
-                            </div> */}
                         </div>
 
                         <div className="adDash">
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="tableWrapprer">
-                                        <p className="starTitle">Your booked list</p>
+                                        <p className="starTitle">{user.username} booked list</p>
                                         <table className="table border">
                                             <thead>
                                                 <tr className="text-center">
@@ -93,26 +87,18 @@ const Booked = () => {
                                                 </tr>
                                             </thead>
                                             {
-                                                data.map(item => (
+                                                data?.map(item => (
                                                     <tbody className="tbody" key={item._id}>
                                                         <tr className="trow">
-                                                            <td data-title="EMAIL" className="tdata">{item.email}</td>
-                                                            <td data-title="ROOM ID" className="tdata">{item.roomId}</td>
+                                                            <td data-title="EMAIL" className="tdata">{item?.email}</td>
+                                                            <td data-title="ROOM ID" className="tdata">{item?.roomId}</td>
                                                             <td data-title="ROOM BOOKED" className="tdata">
                                                                 {item.product ? item.product[0] : "not found"}
-                                                                {/* {
-                                                                    item.product.map((itm,index)=> (
-                                                                        <span key={index}>{itm[0]}</span>
-                                                                    ))
-                                                                } */}
                                                             </td>
                                                             <td data-title="ROOM BOOKED" className="tdata">{item.hotel ? item.hotel : "not found"}</td>
 
                                                             <td data-title="ACTIONS" className="tdata">
                                                                 <div className="action">
-                                                                    {/* <Link to={`/bookedRoom/${item.product? item.product[1] : "undefined"}`} className="link">
-                                                                        <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>
-                                                                    </Link> */}
 
                                                                     <Link to={`/bookedRoom/${item.roomId}`} className="link">
                                                                         <button className="btnEdit"><i className="fa-solid fa-eye"></i></button>

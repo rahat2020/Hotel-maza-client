@@ -17,8 +17,8 @@ const SingleBookedView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotelboking.herokuapp.com/order/bookedRoom/${hotel}`)
-                // const res = await axios.get(`https://hotelboking.herokuapp.com/hotel/room/${hotel}`)
+                const res = await axios.get(`https://hotel-mazan.up.railway.app/order/bookedRoom/${hotel}`)
+                // const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/room/${hotel}`)
                 setData(res.data)
             } catch (err) {
                 console.log(err)

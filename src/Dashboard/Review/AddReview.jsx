@@ -21,7 +21,7 @@ const AddReview = () => {
             }
             console.log(userObj)
 
-            const res = await axios.post("https://hotelboking.herokuapp.com/review/addReview", userObj)
+            const res = await axios.post("https://hotel-mazan.up.railway.app/review/addReview", userObj)
             res && Swal.fire({
                 icon: 'success',
                 title: 'Review added',

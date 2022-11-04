@@ -13,7 +13,7 @@ const AllReviews = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotelboking.herokuapp.com/review/getReview')
+                const res = await axios.get('https://hotel-mazan.up.railway.app/review/getReview')
                 setData(res.data)
             } catch (err) {
                 console.log(err)

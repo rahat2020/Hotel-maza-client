@@ -13,7 +13,7 @@ const ArticleLists = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotelboking.herokuapp.com/article/get')
+                const res = await axios.get('https://hotel-mazan.up.railway.app/article/get')
                 // console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -30,7 +30,7 @@ const ArticleLists = () => {
     };
     const handleDelete = async (id) => {
         try {
-            const deleted = await axios.delete(`https://hotelboking.herokuapp.com/article/delete/${id}`, config)
+            const deleted = await axios.delete(`https://hotel-mazan.up.railway.app/article/delete/${id}`, config)
             console.log(deleted)
             deleted && Swal.fire({
                 icon: 'success',

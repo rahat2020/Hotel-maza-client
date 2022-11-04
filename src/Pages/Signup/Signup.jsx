@@ -48,7 +48,7 @@ const Signup = () => {
         console.log(userObj)
        
         try {
-            const res = await axios.post("https://hotelboking.herokuapp.com/auth/register", userObj);
+            const res = await axios.post("https://hotel-mazan.up.railway.app/auth/register", userObj);
             Swal.fire({
                 icon: 'success',
                 title: `${res.statusText}`,

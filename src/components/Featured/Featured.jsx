@@ -11,8 +11,8 @@ const Featured = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const res = await axios.get('https://hotelboking.herokuapp.com/hotel/list?cities=chattogram,dhaka,shylet')
-        const res = await axios.get('https://hotelboking.herokuapp.com/hotel/countByCity?cities=chattogram,dhaka,dammam')
+        // const res = await axios.get('https://hotel-mazan.up.railway.app/hotel/list?cities=chattogram,dhaka,shylet')
+        const res = await axios.get('https://hotel-mazan.up.railway.app/hotel/countByCity?cities=chattogram,dhaka,dammam')
         // console.log(res)
         setData(res.data)
 
