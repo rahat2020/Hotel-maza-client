@@ -14,7 +14,7 @@ const ReviewManage = () => {
         headers: { token: `Bearer ${JSON.parse(localStorage.getItem('token'))}` }
     };
     useEffect(() => {
-        fetch("https://hotel-mazan.up.railway.app/review/getReview", {
+        fetch("https://hotel-server-beryl.vercel.app/review/getReview", {
             method: "GET",
             headers: {
                 token: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -34,7 +34,7 @@ const ReviewManage = () => {
     // DELETE USER AND ADMIN
     const handleDeleteAdmin = async (id) => {
         try {
-            const res = await axios.delete(`https://hotel-mazan.up.railway.app/review/delete/${id}`, config)
+            const res = await axios.delete(`https://hotel-server-beryl.vercel.app/review/delete/${id}`, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'Review deleted',

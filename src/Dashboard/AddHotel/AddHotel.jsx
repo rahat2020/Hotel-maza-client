@@ -15,7 +15,7 @@ const AddHotel = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/hotel/allhotels')
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/hotel/allhotels')
                 console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -29,7 +29,7 @@ const AddHotel = () => {
     // useEffect(() => {
     //     const fetchData = async () => {
     //         try {
-    //             const res = await axios.get('https://hotel-mazan.up.railway.app/room/getAllRooms')
+    //             const res = await axios.get('https://hotel-server-beryl.vercel.app/room/getAllRooms')
     //             // console.log(res)
     //             setgetRooms(res.data)
     //         } catch (err) {
@@ -47,7 +47,7 @@ const AddHotel = () => {
     };
     const handleDelete = async (_id) => {
         try {
-            const deleted = await axios.delete(`https://hotel-mazan.up.railway.app/hotel/delete/${_id}`, config)
+            const deleted = await axios.delete(`https://hotel-server-beryl.vercel.app/hotel/delete/${_id}`, config)
             console.log(deleted)
             deleted && Swal.fire({
                 title: 'Are you sure?',

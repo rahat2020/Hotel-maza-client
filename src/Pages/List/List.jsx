@@ -27,7 +27,7 @@ const List = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/allhotels?city=${destination}`)
+        const res = await axios.get(`https://hotel-server-beryl.vercel.app/hotel/allhotels?city=${destination}`)
         // console.log(res)
         setData(res.data)
 
@@ -43,7 +43,7 @@ const List = () => {
   // SEARCH MIN AND MAX
   const handleClick = async () => {
     try {
-      const minmax = await axios.get(`https://hotel-mazan.up.railway.app/hotel/allhotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
+      const minmax = await axios.get(`https://hotel-server-beryl.vercel.app/hotel/allhotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
       // console.log(minmax)
       setData(minmax.data)
 

@@ -13,7 +13,7 @@ const AllReviews = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/review/getReview')
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/review/getReview')
                 setData(res.data)
             } catch (err) {
                 console.log(err)

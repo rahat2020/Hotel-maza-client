@@ -15,7 +15,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/room/${hotelId}`)
+                const res = await axios.get(`https://hotel-server-beryl.vercel.app/hotel/room/${hotelId}`)
                 setData(res.data)
             } catch (e) {
                 console.log(e);
@@ -77,7 +77,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         try {
             await Promise.all(
                 selectedRooms.map((roomId) => {
-                    const res = axios.put(`https://hotel-mazan.up.railway.app/room/availability/${roomId}`, {
+                    const res = axios.put(`https://hotel-server-beryl.vercel.app/room/availability/${roomId}`, {
                         dates: alldates,
                     });
                     console.log(roomId);
@@ -93,7 +93,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 roomId,
             }
 
-            const res = await axios.post('https://hotel-mazan.up.railway.app/order/add', bookObj)
+            const res = await axios.post('https://hotel-server-beryl.vercel.app/order/add', bookObj)
             setOpen(false);
             navigate("/booked");
 
@@ -103,6 +103,8 @@ const Reserve = ({ setOpen, hotelId }) => {
             })
         } catch (err) { }
     };
+
+    
     return (
         <div className="r">
             <div className="reserve">

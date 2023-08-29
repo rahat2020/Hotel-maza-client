@@ -10,7 +10,7 @@ const Articles = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/article/get')
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/article/get')
                 setData(res.data)
             } catch (e) {
                 console.log(e)

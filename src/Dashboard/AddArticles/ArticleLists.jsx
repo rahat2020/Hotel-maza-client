@@ -13,7 +13,7 @@ const ArticleLists = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/article/get')
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/article/get')
                 // console.log(res)
                 setData(res.data)
             } catch (err) {
@@ -30,7 +30,7 @@ const ArticleLists = () => {
     };
     const handleDelete = async (id) => {
         try {
-            const deleted = await axios.delete(`https://hotel-mazan.up.railway.app/article/delete/${id}`, config)
+            const deleted = await axios.delete(`https://hotel-server-beryl.vercel.app/article/delete/${id}`, config)
             console.log(deleted)
             deleted && Swal.fire({
                 icon: 'success',
@@ -87,7 +87,8 @@ const ArticleLists = () => {
                                                         </td>
                                                         <td data-title="ACTIONS" className="tdata">
                                                             <div className="action">
-                                                                <button className="btnDelete"><i className="fa-solid fa-trash" onClick={() => handleDelete(item._id)}></i></button>
+                                                                <button className="btnDelete"><i className="fa-solid fa-trash"
+                                                                 onClick={() => handleDelete(item._id)}></i></button>
                                                             </div>
                                                         </td>
                                                     </tr>

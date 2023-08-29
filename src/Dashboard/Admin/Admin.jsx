@@ -15,7 +15,7 @@ const Admin = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get("https://hotel-mazan.up.railway.app/auth/allUsers", config)
+                const res = await axios.get("https://hotel-server-beryl.vercel.app/auth/allUsers", config)
                 setData(res.data)
             } catch (err) {
                 console.log(err)
@@ -34,7 +34,7 @@ const Admin = () => {
     };
     const handleDeleteAdmin = async (id) => {
         try {
-            const res = await axios.delete(`https://hotel-mazan.up.railway.app/auth/deleteuser/${id}`, config)
+            const res = await axios.delete(`https://hotel-server-beryl.vercel.app/auth/deleteuser/${id}`, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'User deleted',

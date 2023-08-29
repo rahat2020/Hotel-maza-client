@@ -14,7 +14,7 @@ const Single = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotel-mazan.up.railway.app/article/get/${id}`)
+                const res = await axios.get(`https://hotel-server-beryl.vercel.app/article/get/${id}`)
                 setData(res.data)
             } catch (err) {
                 console.log(err)
@@ -30,7 +30,7 @@ const Single = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/article/get')
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/article/get')
                 setAr(res.data)
             } catch (e) {
                 console.log(e)

@@ -20,7 +20,7 @@ const SingleUserView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotel-mazan.up.railway.app/auth/user/${id}`, config)
+                const res = await axios.get(`https://hotel-server-beryl.vercel.app/auth/user/${id}`, config)
                 setData(res.data)
 
             } catch (err) {
@@ -53,7 +53,7 @@ const SingleUserView = () => {
             password
         }
         try {
-            const res = await axios.put(`https://hotel-mazan.up.railway.app/auth/updateUser/${id}`, userObj, config)
+            const res = await axios.put(`https://hotel-server-beryl.vercel.app/auth/updateUser/${id}`, userObj, config)
             res && Swal.fire({
                 icon: 'success',
                 title: 'User updated successfully'

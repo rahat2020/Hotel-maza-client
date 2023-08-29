@@ -25,7 +25,7 @@ const SingleHotelView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const getItem = await axios.get(`https://hotel-mazan.up.railway.app/hotel/gethotel/${id}`)
+                const getItem = await axios.get(`https://hotel-server-beryl.vercel.app/hotel/gethotel/${id}`)
                 setData(getItem.data)
                 setRoomId(getItem.data.rooms)
                 // console.log(getItem)
@@ -42,7 +42,7 @@ const SingleHotelView = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/room/getAllRooms', config)
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/room/getAllRooms', config)
                 // console.log(res)
                 setFetchData(res.data)
             } catch (err) {
@@ -86,7 +86,7 @@ const SingleHotelView = () => {
         console.log(hotelObj)
 
         try {
-            const res = await axios.put(`https://hotel-mazan.up.railway.app/hotel/updateHotels/${id}`, hotelObj, config)
+            const res = await axios.put(`https://hotel-server-beryl.vercel.app/hotel/updateHotels/${id}`, hotelObj, config)
             console.log(res)
         } catch (err) {
             console.log(err)

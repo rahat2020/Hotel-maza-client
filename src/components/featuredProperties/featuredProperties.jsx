@@ -10,7 +10,7 @@ const FeaturedProperties = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://hotel-mazan.up.railway.app/hotel/allhotels?featured=true&limit=4&min=10&max=700')
+        const res = await axios.get('https://hotel-server-beryl.vercel.app/hotel/allhotels?featured=true&limit=4&min=10&max=700')
         // console.log(res)
         setData(res.data)
 

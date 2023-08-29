@@ -17,7 +17,7 @@ const Booked = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://hotel-mazan.up.railway.app/order/booked?email=${user.email}`)
+                const res = await axios.get(`https://hotel-server-beryl.vercel.app/order/booked?email=${user.email}`)
                 setData(res.data)
                 // console.log(res.data)
             } catch (err) {
@@ -31,7 +31,7 @@ const Booked = () => {
     //DELETE BOOKED ROOM 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`https://hotel-mazan.up.railway.app/order/delete/${id}`);
+            const res = await axios.delete(`https://hotel-server-beryl.vercel.app/order/delete/${id}`);
 
             res && Swal.fire({
                 title: 'Are you sure?',

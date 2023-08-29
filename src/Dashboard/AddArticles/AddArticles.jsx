@@ -72,7 +72,7 @@ const AddArticles = () => {
             }
             console.log(artObject)
 
-            const res = await axios.post('https://hotel-mazan.up.railway.app/article/add', artObject, config);
+            const res = await axios.post('https://hotel-server-beryl.vercel.app/article/add', artObject, config);
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',

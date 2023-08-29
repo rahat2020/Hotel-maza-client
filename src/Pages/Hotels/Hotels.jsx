@@ -19,9 +19,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
-  const [open, setOpen] = useState(false);
+  
   const [data, setData] = useState([])
-  const [openModal, setOpenModal] = useState(false);
   // console.log(data)
 
   const { id } = useParams()
@@ -30,7 +29,7 @@ const Hotel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://hotel-mazan.up.railway.app/hotel/gethotel/${id}`)
+        const res = await axios.get(`https://hotel-server-beryl.vercel.app/hotel/gethotel/${id}`)
         setData(res.data)
         // console.log(res)
       } catch (e) {
@@ -72,7 +71,7 @@ const Hotel = () => {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1",
     },
   ];
-
+  const [open, setOpen] = useState(false);
   const handleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
@@ -93,6 +92,7 @@ const Hotel = () => {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext);
 
+  const [openModal, setOpenModal] = useState(false);
   const handleClick = () => {
     // console.log('clicked')
     if (user) {

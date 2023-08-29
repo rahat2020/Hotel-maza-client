@@ -13,7 +13,7 @@ const Hotelsadd = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://hotel-mazan.up.railway.app/room/getAllRooms', config)
+                const res = await axios.get('https://hotel-server-beryl.vercel.app/room/getAllRooms', config)
                 // console.log(res)
                 setgetRooms(res.data)
             } catch (err) {
@@ -85,7 +85,7 @@ const Hotelsadd = () => {
                 featured
             }
             console.log(hotelObject)
-            const res = await axios.post('https://hotel-mazan.up.railway.app/hotel/add', hotelObject, config);
+            const res = await axios.post('https://hotel-server-beryl.vercel.app/hotel/add', hotelObject, config);
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',

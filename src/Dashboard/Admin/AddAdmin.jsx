@@ -15,7 +15,7 @@ const AddAdmin = () => {
 
     // FETCH USER DATA FROM DATABASE
     useEffect(() => {
-        fetch("https://hotel-mazan.up.railway.app/auth/allUsers", {
+        fetch("https://hotel-server-beryl.vercel.app/auth/allUsers", {
             method: "GET",
             headers: {
                 token: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -56,7 +56,7 @@ const AddAdmin = () => {
                 isAdmin
             }
             console.log(userObj)
-            const res = await axios.post("https://hotel-mazan.up.railway.app/auth/register", userObj, config)
+            const res = await axios.post("https://hotel-server-beryl.vercel.app/auth/register", userObj, config)
             console.log(res.data)
             res && Swal.fire({
                 icon: 'success',
