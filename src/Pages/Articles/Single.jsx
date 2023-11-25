@@ -38,6 +38,15 @@ const Single = () => {
         }
         fetchData()
     }, [])
+
+    // GO TO TOP
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
+
     return (
         <>
             <GlobalNav />
@@ -83,7 +92,7 @@ const Single = () => {
                             <div className="col__right">
                                 <div className="col__rghtContainer">
                                     {
-                                        ar.slice(0, 5).map((itm,index) => (
+                                        ar.slice(0, 5).map((itm, index) => (
                                             <div className="S__right" key={index}>
                                                 <img src={itm.bgimg} className="Sright__img" alt="..." />
                                                 <div className="card-body Sright__body">
@@ -91,7 +100,7 @@ const Single = () => {
                                                     <p className="Sright__text">
                                                         {itm.titleOne}
                                                     </p>
-                                                    <Link to={`/read/${itm._id}`}className="link">
+                                                    <Link to={`/read/${itm._id}`} className="link">
                                                         <button className="Sright__btn">read more</button>
                                                     </Link>
                                                 </div>

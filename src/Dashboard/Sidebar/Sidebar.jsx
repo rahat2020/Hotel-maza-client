@@ -16,8 +16,8 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     }
 
     // const token = localStorage.getItem("token")
-    const decodedToken = jwt_decode(token)
-    console.log('sidebar', decodedToken.isAdmin)
+    // const decodedToken = jwt_decode(token)
+    console.log('sidebar', token)
 
     return (
         <>

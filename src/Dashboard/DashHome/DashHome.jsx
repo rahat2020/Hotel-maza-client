@@ -19,7 +19,8 @@ const DashHome = () => {
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       <div className="welcome__text">
         <h3 className="welcome__title">
-          <b>{user?.username} </b> Welcome to the Dashboard
+          <b>  Welcome to the Dashboard </b>
+          {/* <b>{user?.username} </b> Welcome to the Dashboard */}
         </h3>
       </div>
     </div>
