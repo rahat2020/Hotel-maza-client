@@ -18,8 +18,7 @@ const Login = () => {
     const userObject = {
       username,
       password,
-    }
-      ;
+    };
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("https://hotel-server-beryl.vercel.app/auth/login", userObject);
