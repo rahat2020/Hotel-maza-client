@@ -38,16 +38,16 @@ import AllBookings from './Dashboard/AllBookings/AllBookings';
 
 const App = () => {
 
+  const { user, token } = useContext(AuthContext);
+  console.log('app.js', token);
+  console.log('app.js', user);
   const ProtectedRoute = ({ children }) => {
-    const { user } = useContext(AuthContext);
     if (!user) {
       return <Navigate to="/login" />;
     }
     return children;
   };
 
-  const { token } = useContext(AuthContext);
-  // console.log(token);
   return (
     <>
       <BrowserRouter>
@@ -63,7 +63,8 @@ const App = () => {
           <Route path="/dashboard/home" element={
             <ProtectedRoute>
               <DashHome />
-            </ProtectedRoute>}
+            </ProtectedRoute>
+          }
           />
           <Route path="/reviews" element={
             <ProtectedRoute>

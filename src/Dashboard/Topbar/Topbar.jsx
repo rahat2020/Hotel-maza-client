@@ -16,7 +16,7 @@ const Topbar = ({ sidebarOpen, openSidebar }) => {
                 </div>
 
                 <div className="topbar__content">
-                    <span className="topbar__name">{user.username}</span>
+                    <span className="topbar__name">{user?.username}</span>
                     <button className="btn__notification">
                         <i className="fa-solid fa-bell bel_icon" />
                         <span className="position-absolute start-90 translate-middle badge rounded-pill bg-danger">

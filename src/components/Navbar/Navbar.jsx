@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext)
 
   const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
+    dispatch({ type: "LOGOUT", payload: "" });
   }
   return (
     <div className="container navcolor">
@@ -35,7 +35,7 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <button to="/" className="btn__nav" onClick={handleLogout}>Logout from {user.username}</button>
+                      <button to="/" className="btn__nav" onClick={handleLogout}>Logout</button>
                     </li>
                   </>
                   :
@@ -47,7 +47,7 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item" id="nav_item">
                       <Link to="/signup" className="nav-link active" aria-current="page">
-                      <button className="btn__nav">Register</button>
+                        <button className="btn__nav">Register</button>
                       </Link>
                     </li>
                   </>

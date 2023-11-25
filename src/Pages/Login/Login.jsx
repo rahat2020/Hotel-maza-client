@@ -22,19 +22,19 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("https://hotel-server-beryl.vercel.app/auth/login", userObject);
-      // console.log(res)
+      console.log('login', res)
       Swal.fire({
         icon: 'success',
         title: `${res.statusText}`,
         text: 'Logged in successfully!',
       })
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      res.statusText === "OK" && localStorage.setItem("token", JSON.stringify(res.data.access_token) ?? null)
+      dispatch({ type: "LOGIN_SUCCESS", payload: res?.data.email });
+      res.status === 200 && localStorage.setItem("token", res?.data?.access_token ?? "")
       navigate("/")
-      setTimeout(function () {
-        res && window.location.reload();
-      }, [1000])
-      return clearTimeout(setTimeout())
+      // setTimeout(function () {
+      //   res && window.location.reload();
+      // }, [1000])
+      // return clearTimeout(setTimeout())
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
       console.log(err)

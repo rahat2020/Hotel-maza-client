@@ -8,16 +8,16 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
-    const { dispatch } = useContext(AuthContext)
+    const { dispatch, token } = useContext(AuthContext)
     const navigate = useNavigate()
     const handleLogout = () => {
-        dispatch({ type: "LOGOUT" });
+        dispatch({ type: "LOGOUT", payload: "" });
         navigate("/login")
     }
 
-    const token = JSON.parse(localStorage.getItem('token'))
+    // const token = localStorage.getItem("token")
     const decodedToken = jwt_decode(token)
-    //    console.log(decodedToken.isAdmin)
+    console.log('sidebar', decodedToken.isAdmin)
 
     return (
         <>
@@ -39,7 +39,8 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     </Link>
 
                     {
-                        decodedToken.isAdmin === true ?
+                        token?.role === 'admin' ?
+                            // decodedToken?.isAdmin === true ?
                             <>
                                 <Link to="/addhotel" className="link">
                                     <li>
